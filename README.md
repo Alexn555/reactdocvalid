@@ -78,16 +78,17 @@ This will run the client at localhost:3000
 		tests are spread among folders 
 		
 		App ->  document-list (handles movies (popular) list using react-bootstrap-table 2)) 
-		         it uses component server-pagination that handles pagination and pagination will
-				 request any other page from  server	
+		        it uses component server-pagination that handles pagination and pagination will
+			    request any other page from  server	
                 also some utility classes are used like data parser to format date in other locale format.
 				
-    			By pressing star you will add movies to favorites. You can unselect from favorites.
-				By pressing Watch Later you will add movies to watch later list 
-				  And to view Watch Later list you just need to press Only Watch Later which is on top.
-				  
+				By pressing Validate you also add documents to history of processed documents.
+				You switch between Full list and History list by pressing Full / Files History buttons.
+				
 				You also can adjust width, so in mobile app looks good.
-		      Currently application validate all feature runs in semi-queue method, where validateDocument
+				To Validate All files in current page you need to press Validate All button.
+				  
+		        Currently application validate all feature runs in semi-queue method, where validateDocument
 			      fires sequencely after [n] time.
 				  
 
