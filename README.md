@@ -8,7 +8,7 @@ v 1.0
 
 ```bash
 # Install dependencies
-cd reactmoviecrab
+cd reactdocvalid
 npm install
 ```
 
