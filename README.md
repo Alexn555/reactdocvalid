@@ -80,7 +80,7 @@ This will run the client at localhost:3000
 		App ->  document-list (handles movies (popular) list using react-bootstrap-table 2)) 
 		        it uses component server-pagination that handles pagination and pagination will
 			    request any other page from  server	
-                also some utility classes are used like data parser to format date in other locale format.
+                also some utility classes are used like data parser to format date.
 				
 				By pressing Validate you also add documents to history of processed documents.
 				You switch between Full list and History list by pressing Full / Files History buttons.
