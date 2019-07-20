@@ -263,8 +263,7 @@ class DocumentsListPage extends Component {
 
    showTable() {
 	   const documents = this.state.validateHistory ? this.state.validateHistoryList : this.props.documents;
-	   
-	   let columns = this.tableColumnsConfig.getColumns(this,
+	   const columns = this.tableColumnsConfig.getColumns(this,
 			this.state,
 			this.state.screenWidth < MOBILE_SCREEN_WIDTH,
 			this.state.validateHistory,
