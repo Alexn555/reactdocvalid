@@ -9,19 +9,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/documents-list/documents-list.scss';
 
 import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import filterFactory from 'react-bootstrap-table2-filter';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
-import DateHelper from '../utils/date-helper';
 import ObjectHelper from '../utils/object-helper';
-import NumberHelper from '../utils/number-helper';
 
+import DocumentTableColumnsConfig from '../components/documents-list/table-columns-config';
 import ValidationClient from '../validate';
 
 import { FetchListType, ListType, ValidationType, ListOperations } from '../types/listTypes';
 import { MOBILE_SCREEN_WIDTH } from '../types/mobileVars';
 import ServerPagination from '../components/server-pagination/server-pagination';
-import { FaStar, FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const TOTAL_LIST_PAGES = 10;
 const PER_PAGE = 10;
@@ -30,6 +29,7 @@ const FILE_QUEUE_TIMEOUT = 2000;
 class DocumentsListPage extends Component {
 	
   validationClient;
+  tableColumnsConfig;
 
   state = {
 	  pageNumber: 1,
@@ -47,6 +47,7 @@ class DocumentsListPage extends Component {
   constructor(props) {
 	  super(props);
 	  this.validationClient = new ValidationClient();
+	  this.tableColumnsConfig = new DocumentTableColumnsConfig();
   }
 
   componentDidMount() {
@@ -134,8 +135,8 @@ class DocumentsListPage extends Component {
     }
   }
   
-  displayValidationStatus(row) {
-	  for (let validation of this.state.validatedFiles) {
+  displayValidationStatus(row, state) {
+	  for (let validation of state.validatedFiles) {
 		  if (row.id === validation.id) {
 			  return validation.valid;
 		  }
@@ -249,122 +250,27 @@ class DocumentsListPage extends Component {
 	 }
   }
   
-  toggleOnOffValidateHistory(row, isAdd) {
+  toggleOnOffValidateHistory(row, isAdd, self) {
     if (isAdd) {
 	   return (<Button variant="outline-info" value="addWatchHistory"
-			onClick={(e) => { this.onAddValidateHistory(e, row) }}>Validate Now</Button>);
+			onClick={(e) => { self.onAddValidateHistory(e, row) }}>Validate Now</Button>);
     } 
 	return (<Button variant="outline-info" value="removeWatchHistory"
-		onClick={(e) => { this.onRemoveValidateHistory(e, row) }}>
+		onClick={(e) => { self.onRemoveValidateHistory(e, row) }}>
 			<FaTrashAlt />
 		</Button>);
   }
-  
 
    showTable() {
-	  const documents = this.state.validateHistory ? this.state.validateHistoryList : this.props.documents;
+	   const documents = this.state.validateHistory ? this.state.validateHistoryList : this.props.documents;
 	   
-	  const formatProcessed = (cell, row) => {
-		 return(
-			<div>
-			 {this.toggleOnOffValidateHistory(row, true)}
-			</div>
-		 )
-	   };
-	   
-	   const formatValidateHistory = (cell, row) => {
-		 return(
-			<div>
-			 {this.toggleOnOffValidateHistory(row, false)}
-			</div>
-		 )
-	   };
-	   
-	   const formatSize = (cell, row) => {
-		 return(
-			<span>{NumberHelper.convertToSize(cell)}</span>
-		 )
-	   };
-	   
-	   const formatStatus = (cell, row) => {
-		 return(
-			<span>{this.displayValidationStatus(row)}</span>
-		 )
-	   };
-	   
-	   const formatCreationDate = (cell, row) => {
-		 return(
-			<span>{DateHelper.parseReleaseDate(cell)}</span>
-		 )
-	   };
-
-       let columns = [{
-           dataField: 'id',
-           text: 'ID'
-       }, {
-           dataField: 'filename',
-           text: 'File',
-           filter: textFilter(),
-           sort: true,
-       }, {
-           dataField: 'size',
-           text: 'Size',
-           sort: true
-       }, {
-           dataField: 'author',
-           text: 'Author',
-		   sort: true
-       }, { // custom column to add to processed
-           dataField: 'custom_processed',
-           text: 'Process',
-		   formatter: formatProcessed
-       }, { 
-           dataField: 'custom_status',
-           text: 'Status',
-		   formatter: formatStatus
-       },	{
-           dataField: 'created_at',
-           text: 'Creation date',
-		   formatter: formatCreationDate,
-		   sort: true
-       }];
-	   
-	   let valHistoryColumnIndex = 5;
-	   
-	   // add less columns for mobile version
-	   if (this.state.screenWidth < MOBILE_SCREEN_WIDTH) {
-		   columns = [{
-			   dataField: 'filename',
-			   text: 'File',
-			   sort: true,
-		   },{
-			   dataField: 'size',
-			   text: 'Size',
-			   sort: true,
-		   }, {
-			   dataField: 'author',
-			   text: 'Author',
-			   sort: false
-		   }, {
-			   dataField: 'custom_processed',
-			   text: 'Process',
-			   formatter: formatProcessed
-		   }, {
-			   dataField: 'custom_status',
-			   text: 'Status',
-			   //formatter: formatStatus
-		   } ];
-		   valHistoryColumnIndex = 3;
-	   }
-	   
-	   if (this.state.validateHistory) {
-		   columns[valHistoryColumnIndex] = { 
-			  dataField: 'custom_processed',
-			  text: 'Remove',
-			  formatter: formatValidateHistory
-          };
-	   }
-	   	   
+	   let columns = this.tableColumnsConfig.getColumns(this,
+			this.state,
+			this.state.screenWidth < MOBILE_SCREEN_WIDTH,
+			this.state.validateHistory,
+			this.toggleOnOffValidateHistory,
+			this.displayValidationStatus);
+	   	   	   
        return (
            <div>
                <BootstrapTable keyField='id'
