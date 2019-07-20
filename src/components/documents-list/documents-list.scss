@@ -54,6 +54,22 @@ th { /* Chrome hack */
 	color: $statusColorInvalid;
 }
 
+.validatedFiles {
+   background: #f2f2f2;
+   height: 160px;
+   font-size: 10pt;
+   overflow-y: scroll;
+   
+   & ul {
+	  list-style-type: none;
+	  padding-left: 0;
+	  margin-left: 0;
+   }
+}
+.validatedFileStrong {
+   font-weight: bold;
+}
+
 .server-pagination {
     display: inline-block;
 	margin-bottom: 30px;

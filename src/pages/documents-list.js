@@ -78,10 +78,16 @@ class DocumentsListPage extends Component {
 		  this.startFileQueue(files, counter, total);
 		}, FILE_QUEUE_TIMEOUT);
 	  } else {
-		  this.setState({validateAllStarted: false});
+		  this.setState({validateAllStarted: false}); 
 		  this.refreshTable();
-		  setTimeout(() => { this.setState({ validateAllSummary: { index: 0, total: 0 }}) }, 500);
+		  this.resetValidate();
 	  }
+   }
+   
+   resetValidate(timeout = 2000) {
+	   setTimeout(() => { 
+		 this.setState({ validateAllSummary: { index: 0, total: 0 }, validatedFiles: [] }) 
+	   }, timeout);
    }
   
  
@@ -138,12 +144,12 @@ class DocumentsListPage extends Component {
   
   displayCurrentFileValidationStatus() {
 	  if (this.state.currentFileValidation.id !== 0) {
-		  return this.showProcessMessage();
+		  return this.getProcessMessage();
 	  } else return <div> </div>
   }
   
   alertCurrentFileValidation() {
-	 const html = this.showProcessMessage(true);
+	 const html = this.getProcessMessage(true, true);
 	 if (this.state.showProcessAlert) {
 		 return <SweetAlert success title="Processing file..." allowEscape={true} 
 			onConfirm={()=> { this.setState({ showProcessAlert: false})}}>
@@ -154,16 +160,39 @@ class DocumentsListPage extends Component {
 	 }
   }
   
-  showProcessMessage(useBreakLine = false) {
+  
+  getProcessMessage(useBreakLine = false, isAlertDialog = false) {
 	  const br = useBreakLine ? <br /> : <span></span>;
-	  let allFileSummary = <span> </span>;
+	  const validatedFiles = this.getValidatedFilesList();
+	  let processedReport = <span> </span>;
+	  let allFileSummary = <span> </span>;		
 	  if (this.state.validateAllSummary.total > 0) {
-		  allFileSummary = <span> File # {this.state.validateAllSummary.index + 1} / {this.state.validateAllSummary.total} </span> 
+		  if (isAlertDialog && this.state.validateAllSummary.index > 0){
+			  processedReport = <div className='validatedFiles'> <br />
+			    Report: {validatedFiles}  
+			 </div>
+		  }
+		  
+		  allFileSummary = <span> 
+		      File # {this.state.validateAllSummary.index + 1} / {this.state.validateAllSummary.total}  <br />
+		 </span> 
 	  }
+	  
 	  return <span className='status-messanger'> { 'File: ' + this.state.currentFileValidation.id }  
 		  {br} {allFileSummary} <b> { this.state.currentFileValidation.statusName } </b>  
 			 <span className={'status-color-'+this.state.currentFileValidation.valid}> {
-				 this.state.currentFileValidation.valid } </span> </span>;
+				 this.state.currentFileValidation.valid } </span> {processedReport} </span>;
+  }
+ 
+	 
+  getValidatedFilesList() {
+	 const arrayList = this.state.validatedFiles.map((file, index) => 
+		<li key={index}>
+			 <span className='validatedFileStrong'> {file.id} </span> | status: {file.statusName} is 
+			 <span className={'validatedFileStrong status-color-'+file.valid}> {file.valid} </span>
+		</li>
+	 );
+	 return <ul>{arrayList}</ul>;
   }
   
   displayValidateAllButton() {
