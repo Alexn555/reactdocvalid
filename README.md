@@ -1,5 +1,8 @@
 # React Doc Valid  Document validation system using redux
 
+v 1.0.6
+  Added huge improvements, moved validation main method to validate service 
+  
 v 1.0.5
  Made huge improvements, added processed files report, move columns config to table-columns-config 
  

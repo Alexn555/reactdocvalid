@@ -15,9 +15,9 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 import ObjectHelper from '../utils/object-helper';
 
 import DocumentTableColumnsConfig from '../components/documents-list/table-columns-config';
-import ValidationClient from '../validate';
+import ValidationClient from '../services/validate';
 
-import { FetchListType, ListType, ValidationType, ListOperations } from '../types/listTypes';
+import { FetchListType, ListType, ListOperations } from '../types/listTypes';
 import { MOBILE_SCREEN_WIDTH } from '../types/mobileVars';
 import ServerPagination from '../components/server-pagination/server-pagination';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -73,7 +73,7 @@ class DocumentsListPage extends Component {
 	if(counter < total){
 		this.setState({ currentFileValidation: { id: 100, statusName: 'All files starting to process... ' }});
 		setTimeout(() => {
-		  this.validateDocument(files[counter], false);
+		  this.validationClient.validateDocument(files[counter], this, false, this.setValidationStatus, this.setProcessAlert);
 		  this.setState({ validateAllSummary: { index: counter, total: total }});
 		  counter++;
 		  this.startFileQueue(files, counter, total);
@@ -91,46 +91,25 @@ class DocumentsListPage extends Component {
 	   }, timeout);
    }
   
- 
-  
-  async validateDocument(documentId = 0, isRefreshTable = true) {
-	 let isCheckSumValid, isSchemaValid, isSignatureValid;
-	 this.setState({ showProcessAlert: true });
-	 
-	 this.setValidationStatus(documentId, ValidationType.CHECKSUM + ' processing...');
-	 isCheckSumValid = await this.validationClient.isCheckSumValid(documentId);
-	 this.setValidationStatus(documentId, ValidationType.CHECKSUM, isCheckSumValid, true, isRefreshTable); 
-	 if (!isCheckSumValid) { return false; }
-	 
-	 this.setValidationStatus(documentId, ValidationType.SCHEMA + ' processing...'); 
-	 isSchemaValid = await this.validationClient.isSchemaValid(documentId);
-	 this.setValidationStatus(documentId, ValidationType.SCHEMA, isSchemaValid, true, isRefreshTable); 
-	 if (!isSchemaValid) { return false; }
-
-	 this.setValidationStatus(documentId, ValidationType.SIGNATURE + ' processing...'); 
-	 isSignatureValid = await this.validationClient.isSignatureValid(documentId);
-	 this.setValidationStatus(documentId, ValidationType.SIGNATURE, isSignatureValid, true, isRefreshTable); 
-	 if (!isSignatureValid) {  return false; }
-
-	 this.setValidationStatus(documentId, '', true, true, isRefreshTable);
-	 setTimeout(() => { this.setState({ showProcessAlert: true }) }, 700);
+  setProcessAlert(self) {
+	  self.setState({ showProcessAlert: true });
   }
   
-  setValidationStatus(documentId = 0, 
+  setValidationStatus(documentId = 0, self,
 	  statusName = '',
 	  processValid = false, 
 	  isLastStage = false, 
 	  isRefreshTable = true) {
-	let updValidatedFiles = this.state.validatedFiles;
-	this.setState({ 
+	let updValidatedFiles = self.state.validatedFiles;
+	self.setState({ 
 	  	currentFileValidation: { id: documentId, statusName: statusName + ' is ' , valid: processValid ? 'valid' : 'invalid', completed: isLastStage }
 	});
     if (isLastStage) {
 	   const newFileValidation = { id: documentId, statusName: statusName, valid: processValid ? 'valid' : 'invalid' };
 	   updValidatedFiles.push(newFileValidation);
-	   this.setState({ validatedFiles: updValidatedFiles });  
+	   self.setState({ validatedFiles: updValidatedFiles });  
 	   if (isRefreshTable) {
-		   setImmediate(() => { this.refreshTable(); });
+		   setImmediate(() => { self.refreshTable(); });
 	   } 
     }
   }
@@ -205,7 +184,7 @@ class DocumentsListPage extends Component {
   
   onAddValidateHistory(e, row) {
 	e.preventDefault();
-    this.validateDocument(row.id);
+    this.validationClient.validateDocument(row.id, this, true, this.setValidationStatus, this.setProcessAlert);
 	this.addRemoveItem(this.state.validateHistoryList, ListType.VALIDATEHISTORY, row, ListOperations.ADD);
 	return false;
   }
