@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de76b8c6-a259-4233-acfc-9da469b24ee2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actions/index.js" afterPath="$PROJECT_DIR$/src/services/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/document-actions.js" afterPath="$PROJECT_DIR$/src/actions/document-actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/documents-error/documents-error.js" afterPath="$PROJECT_DIR$/src/components/documents-error/documents-error.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/documents-list/documents-list.scss" afterPath="$PROJECT_DIR$/src/components/documents-list/documents-list.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/server-pagination/server-pagination.js" afterPath="$PROJECT_DIR$/src/components/server-pagination/server-pagination.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/documents-list.js" afterPath="$PROJECT_DIR$/src/pages/documents-list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/validate/index.js" afterPath="$PROJECT_DIR$/src/services/validate/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/test/date-helper.test.js" afterPath="$PROJECT_DIR$/src/utils/test/date-helper.test.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="documents-list.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="documents-list.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/documents-list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3457">
-              <caret line="223" column="24" lean-forward="false" selection-start-line="223" selection-start-column="24" selection-end-line="223" selection-end-column="24" />
+            <state relative-caret-position="771">
+              <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -63,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server-pagination.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server-pagination.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/server-pagination/server-pagination.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1231">
-              <caret line="66" column="4" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+            <state relative-caret-position="240">
+              <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -86,7 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>paginationOptions</find>
       <find>ContactFormPage</find>
       <find>propTypes</find>
       <find>instanceOf</find>
@@ -116,6 +103,7 @@
       <find>contacts</find>
       <find>semantic</find>
       <find>react-boo</find>
+      <find>setProcessAlert</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -136,6 +124,7 @@
     <setting file="file://$PROJECT_DIR$/src/index.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/README.md" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/App.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/pages/documents-list.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/App.test.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
@@ -166,13 +155,13 @@
         <option value="$PROJECT_DIR$/src/components/contact-list/contact-list.scss" />
         <option value="$PROJECT_DIR$/src/pages/contact-list-page.js" />
         <option value="$PROJECT_DIR$/src/components/server-pagination/server-pagination.js" />
-        <option value="$PROJECT_DIR$/src/pages/documents-list.js" />
         <option value="$PROJECT_DIR$/src/components/documents-error/documents-error.js" />
         <option value="$PROJECT_DIR$/src/services/index.js" />
         <option value="$PROJECT_DIR$/src/services/validate/index.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/utils/test/date-helper.test.js" />
+        <option value="$PROJECT_DIR$/src/pages/documents-list.js" />
       </list>
     </option>
   </component>
@@ -376,12 +365,12 @@
       <workItem from="1559466156395" duration="2230000" />
       <workItem from="1559655845596" duration="22000" />
       <workItem from="1563780068315" duration="2162000" />
-      <workItem from="1563888646874" duration="1073000" />
+      <workItem from="1563888646874" duration="1434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65681000" />
+    <option name="totallyTimeSpent" value="66042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="167" y="0" width="1155" height="735" extended-state="1" />
@@ -646,34 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/validate/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="940">
-          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/documents-list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3457">
-          <caret line="223" column="24" lean-forward="false" selection-start-line="223" selection-start-column="24" selection-end-line="223" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -722,8 +683,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/server-pagination/server-pagination.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1231">
-          <caret line="66" column="4" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+        <state relative-caret-position="240">
+          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/validate/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="940">
+          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="771">
+          <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

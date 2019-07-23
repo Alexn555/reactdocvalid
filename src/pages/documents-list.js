@@ -65,8 +65,7 @@ class DocumentsListPage extends Component {
 	 // get all files (current page)
 	 const documents = this.props.documents;
 	 const documentIds = documents.map(item => item.id);
-	 const total = documentIds.length;
-	 this.startFileQueue(documentIds, 0, total);
+	 this.startFileQueue(documentIds, 0, documentIds.length);
   }
   
   startFileQueue(files, counter = 0, total = 0) {
