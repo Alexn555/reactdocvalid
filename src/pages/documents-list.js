@@ -42,7 +42,7 @@ class DocumentsListPage extends Component {
 	  validateAllStarted: false,
 	  validateAllSummary: { index: 0, total: 0},
 	  validatedFiles: [],
-  }
+  };
   
   constructor(props) {
 	  super(props);
@@ -95,7 +95,7 @@ class DocumentsListPage extends Component {
 	  self.setState({ showProcessAlert: true });
   }
   
-  setValidationStatus(documentId = 0, self,
+  setValidationStatus(documentId, self,
 	  statusName = '',
 	  processValid = false, 
 	  isLastStage = false, 
@@ -295,7 +295,7 @@ class DocumentsListPage extends Component {
 
 }
 
-// Make contacts  array available in  props
+// Make items array available in  props
 function mapStateToProps(state) {
   return {
       documents: state.documentsStore.documents,

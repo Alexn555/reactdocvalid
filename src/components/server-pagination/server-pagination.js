@@ -11,7 +11,7 @@ class ServerPagination extends Component {
 	state = {
 		pageNumber: 1,
 		activePageNumber: 1,
-	}
+	};
 
 	onServerPageToggle(e, direction) {
         e.preventDefault();
@@ -45,7 +45,7 @@ class ServerPagination extends Component {
         this.setState({
             pageNumber: pageNumber,
             activePageNumber: pageNumber
-        })
+        });
 		this.fetchAndUpdate(pageNumber);
         return false;
    }
@@ -71,7 +71,7 @@ class ServerPagination extends Component {
 			return <div></div>;
 		}
         const size = this.getTotalPagesCount();
-        let list = []
+        let list = [];
         let children = [];
 
 		children.push(this.showServerNextPage());
@@ -95,7 +95,7 @@ class ServerPagination extends Component {
 
 }
 
-// Make contacts  array available in  props
+// Make items array available in  props
 function mapStateToProps(state) {
   return {
       documents: state.documentsStore.documents,

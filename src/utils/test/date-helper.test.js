@@ -11,4 +11,4 @@ it('should get correct date', () => {
 it('should get empty date if no date passed', () => {
   const res = '';
   expect(DateHelpers.parseReleaseDate('')).toEqual(res);
-})
+});

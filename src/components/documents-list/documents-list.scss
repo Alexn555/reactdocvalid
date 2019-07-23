@@ -79,10 +79,12 @@ th { /* Chrome hack */
     display: inline-block;
     @extend .pageItemCl;
     @extend .noSelectText;
+	
+	&:hover {
+		 cursor: $active-cursor;
+	}
 }
-.server-pagination-item:hover {
-    cursor: $active-cursor;
-}
+
 .server-pagination-item-active {
     cursor: $active-cursor;
     display: inline-block;

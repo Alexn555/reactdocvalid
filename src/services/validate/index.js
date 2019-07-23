@@ -1,19 +1,9 @@
-import axios from "axios";
+import { client } from '../../services/';
 import { ValidationType } from '../../types/listTypes';
 
 export default class ValidationClient {
-  client;
-
-  constructor() {
-      this.client = axios.create({
-          baseURL: "http://fe-test.guardtime.com/",
-          headers: {
-              "Content-Type": "application/json"
-          }
-      });
-  }
   
-  async validateDocument(documentId = 0, 
+  async validateDocument(documentId, 
     parentContext,
 	isRefreshTable = true,
 	setValidationStatusCb,
@@ -40,38 +30,25 @@ export default class ValidationClient {
 	 setTimeout(() => { setProcessAlertCb(parentContext); }, 700);
   }
 
-  async isCheckSumValid(documentId = 0) {
-     return await this.client.post('documents/'+documentId+'/validateChecksum')
-      .then((response) => {
-		 let isValid = response.data && response.data.valid;
-         return isValid;
-      })
-      .catch((error) => {
-         console.warn('checksum error ', error);
-         return error;
-      });
+  async isCheckSumValid(documentId) {
+	  return await this.isMethodValid(documentId, 'validateChecksum', 'checksum');
+  }
+ 
+  async isSchemaValid(documentId) {
+	  return await this.isMethodValid(documentId, 'validateSchema', 'schema');
   }
   
-   async isSchemaValid(documentId = 0) {
-     return await this.client.post('documents/'+documentId+'/validateSchema')
-      .then((response) => {
-		 let isValid = response.data && response.data.valid;
-         return isValid;
-      })
-      .catch((error) => {
-         console.warn('schema error ', error);
-         return error;
-      });
+  async isSignatureValid(documentId) {
+     return await this.isMethodValid(documentId, 'validateSignature', 'signature');
   }
   
-   async isSignatureValid(documentId = 0) {
-     return await this.client.post('documents/'+documentId+'/validateSignature')
+  async isMethodValid(documentId, postMethod, typeMethod) {
+	return await client.post(`documents/${documentId}/${postMethod}`)
       .then((response) => {
-		 let isValid = response.data && response.data.valid;
-         return isValid;
+         return response.data && response.data.valid;
       })
       .catch((error) => {
-         console.warn('signature error ', error);
+		 console.warn(`${typeMethod} error  ${error}`);
          return error;
       });
   }

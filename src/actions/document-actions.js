@@ -1,4 +1,4 @@
-import { client } from './';
+import { client } from '../services/';
 
 export function fetchDocuments(page = 1, perPage = 10){
   return dispatch => {

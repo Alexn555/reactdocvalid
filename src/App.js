@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
+import { Container } from 'react-bootstrap';
 import DocumentsListPage from './pages/documents-list';
 
 class App extends Component {

@@ -11,7 +11,7 @@ export default function DocumentsError({object, loading, errors}){
 		   <p>Please wait.</p>
        </Message.Content>
       </Message>
-  )
+  );
 
   const emptyMessage = (
       <Message icon info>
@@ -21,7 +21,7 @@ export default function DocumentsError({object, loading, errors}){
            <p>No data found</p>
        </Message.Content>
       </Message>
-  )
+  );
 
   const timeoutMessage = (
       <Message icon negative>
@@ -31,7 +31,7 @@ export default function DocumentsError({object, loading, errors}){
            Is the backend server running?
        </Message.Content>
       </Message>
-  )
+  );
 
   return (
       <div>
