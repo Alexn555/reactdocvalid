@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de76b8c6-a259-4233-acfc-9da469b24ee2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/documents-list.js" afterPath="$PROJECT_DIR$/src/pages/documents-list.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +19,8 @@
       <file leaf-file-name="documents-list.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/documents-list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
+            <state relative-caret-position="271">
+              <caret line="68" column="46" lean-forward="false" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -365,12 +364,12 @@
       <workItem from="1559466156395" duration="2230000" />
       <workItem from="1559655845596" duration="22000" />
       <workItem from="1563780068315" duration="2162000" />
-      <workItem from="1563888646874" duration="1434000" />
+      <workItem from="1563888646874" duration="1603000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66042000" />
+    <option name="totallyTimeSpent" value="66211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="167" y="0" width="1155" height="735" extended-state="1" />
@@ -711,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/documents-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
+        <state relative-caret-position="271">
+          <caret line="68" column="46" lean-forward="false" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
